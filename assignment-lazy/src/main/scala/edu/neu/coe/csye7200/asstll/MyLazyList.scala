@@ -309,7 +309,7 @@ abstract class LazyListLike[+X] extends ListLike[X] {
     * NOTE: that we have defined the <code>map</code> function in terms of <code>flatMap</code> and the
     * <code>apply</code> function (sometimes known as the "unit" function).
     *
-    * @param f a function which converts an <code>X<code into a <code>Y<code>.
+    * @param f a function which converts an <code>X</code> into a <code>Y<code>.
     * @tparam Y the underlying type of the result.
     * @return a <code>LazyList[Y]<code> where each element is the result of applying <code>f<code to the corresponding
     *         element of <code>this<code>.
@@ -405,7 +405,7 @@ object MyLazyList {
     * @return a <code>ListLike[X]</code> with an infinite number of element (whose values are <code>x</code>,
     *         <code>x+step</code>, etc.).
     */
-  def from(start: Int, step: Int): ListLike[Int] = ??? // TO BE IMPLEMENTED
+  def from(start: Int, step: Int): ListLike[Int] = MyLazyList(start, () => from(start + step, step))
 
   /**
     * Construct a stream of Integers starting with <code>start</code> and with successive elements being
